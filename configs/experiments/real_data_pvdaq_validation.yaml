@@ -1,0 +1,5 @@
+include: [real_data_external_validation.yaml]
+experiment:
+  name: real_data_pvdaq_validation
+  targets: ['2105', '2107', '9068', '9069']
+  methods: [rmaf, persistence, target_only]

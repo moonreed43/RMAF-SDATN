@@ -1,0 +1,6 @@
+include: [real_data_external_validation.yaml]
+model: {horizon: 24}
+experiment:
+  name: real_data_multihorizon_validation
+  methods: [rmaf, persistence, target_only, patchtst, timesnet]
+evaluation: {steps: [4, 8, 16, 24]}

@@ -1,0 +1,17 @@
+training:
+  batch_size: 32
+  weight_decay: 1.e-5
+  grad_clip: 5
+  epochs: {shared: 100, adapter: 50, adversarial: 50, target: 50}
+  patience: 10
+  source_validation_fraction: 0.10
+  source_batches_per_epoch: null
+  lr:
+    initial: 0.001
+    adversarial: {backbone: 0.0001, adapter: 0.0005, evolution: 0.0005, head: 0.0005, discriminator: 0.001}
+    target: {backbone: 0.0001, adapter: 0.0005, evolution: 0.0005, head: 0.001}
+  seeds: [42, 43, 44, 45, 46]
+  deterministic: true
+  device: auto
+  workers: 0
+  cpu_threads: 2

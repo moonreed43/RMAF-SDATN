@@ -1,0 +1,17 @@
+include: [../base.yaml]
+experiment:
+  name: sensitivity
+  transfers: [mixed]
+  methods: [rmaf, target_only]
+  variants:
+    full: {}
+    rank1: {model: {rank: 1}}
+    rank8: {model: {rank: 8}}
+    rank16: {model: {rank: 16}}
+    population10_gen10: {algorithm: {fusion: {population: 10, generations: 10}}}
+    population30_gen40: {algorithm: {fusion: {population: 30, generations: 40}}}
+    gate_uniform: {algorithm: {alignment: {gate_range: [1, 1]}}}
+    gate_wide: {algorithm: {alignment: {gate_range: [0.25, 1.75]}}}
+    gate_max: {algorithm: {alignment: {gate_range: [0, 2]}}}
+    anchor_half: {algorithm: {anchoring: {multiplier: 0.5}}}
+    anchor_double: {algorithm: {anchoring: {multiplier: 2.0}}}

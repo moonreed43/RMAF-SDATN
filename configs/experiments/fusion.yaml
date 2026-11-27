@@ -1,0 +1,12 @@
+include: [../base.yaml]
+experiment:
+  name: fusion
+  transfers: [mixed]
+  budgets: [30]
+  methods: [rmaf]
+  evaluate_stage: 2
+  variants:
+    full: {}
+    uniform: {algorithm: {fusion: {mode: uniform}}}
+    prior_only: {algorithm: {fusion: {mode: prior_only}}}
+    objective_only: {algorithm: {fusion: {mode: objective_only}}}

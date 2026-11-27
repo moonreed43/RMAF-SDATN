@@ -1,0 +1,6 @@
+include: [../base.yaml]
+experiment:
+  name: pvdaq
+  targets: ['2105', '2107', '9068', '7333', '9069']
+  transfers: [external]
+  budgets: [30]

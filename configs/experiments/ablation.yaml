@@ -1,0 +1,26 @@
+include: [../base.yaml]
+experiment:
+  name: ablation
+  transfers: [mixed]
+  budgets: [30]
+  methods: [rmaf, target_only]
+  variants:
+    full: {}
+    independent_models: {algorithm: {independent_full_models: true}}
+    uniform_fusion: {algorithm: {fusion: {mode: uniform}}}
+    discrepancy_only: {algorithm: {reliability: {eta: 0.0}}}
+    error_only: {algorithm: {reliability: {eta: 1.0}}}
+    no_prior_penalty: {algorithm: {fusion: {mode: no_prior_penalty}}}
+    single_scale: {model: {scales: [1]}}
+    align_both: {algorithm: {alignment: {branch: both}}}
+    global_discriminator: {algorithm: {alignment: {discriminator: global}}}
+    uniform_station_weights: {algorithm: {alignment: {station_weights: uniform}}}
+    no_gate: {algorithm: {alignment: {gate: none}}}
+    no_anchor: {algorithm: {anchoring: {mode: none}}}
+    fixed_anchor: {algorithm: {anchoring: {mode: fixed}}}
+    freeze_backbone: {algorithm: {anchoring: {mode: none, freeze_backbone: true}}}
+    progressive_base: {algorithm: {fusion: {mode: uniform}, alignment: {enabled: false}, anchoring: {mode: none}}}
+    progressive_fusion: {algorithm: {alignment: {enabled: false}, anchoring: {mode: none}}}
+    progressive_alignment: {algorithm: {anchoring: {mode: none}}}
+    high_gate: {algorithm: {alignment: {gate: high}}}
+    low_gate: {algorithm: {alignment: {gate: low}}}

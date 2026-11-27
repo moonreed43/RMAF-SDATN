@@ -1,0 +1,13 @@
+include: [fusion.yaml]
+training:
+  seeds: [42]
+  epochs: {shared: 1, adapter: 1, adversarial: 1, target: 1}
+  source_batches_per_epoch: 4
+algorithm:
+  fusion: {population: 6, generations: 4}
+experiment:
+  name: integration_fusion_20261127
+  targets: [H7]
+evaluation:
+  diagnostic_samples: 32
+  latency_repeats: 5

@@ -1,0 +1,14 @@
+include: [stability.yaml]
+training:
+  seeds: [42]
+  epochs: {shared: 1, adapter: 1, adversarial: 1, target: 1}
+  source_batches_per_epoch: 2
+algorithm:
+  fusion: {population: 4, generations: 2}
+experiment:
+  name: integration_stability_20261127
+  targets: [H7]
+  methods: [rmaf, target_only]
+evaluation:
+  diagnostic_samples: 32
+  latency_repeats: 5

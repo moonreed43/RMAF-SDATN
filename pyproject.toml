@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rmaf-sdatn"
+version = "0.2.0"
+requires-python = ">=3.9"
+dependencies = ["torch>=2.1", "numpy>=1.24", "pandas>=2.1", "PyYAML>=6", "requests>=2.31", "openpyxl>=3.1", "matplotlib>=3.7", "tzdata>=2024.1", "pyarrow>=14"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

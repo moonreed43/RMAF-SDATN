@@ -1,0 +1,16 @@
+include: [../base.yaml]
+training:
+  seeds: [42]
+  epochs: {shared: 2, adapter: 2, adversarial: 2, target: 2}
+  source_batches_per_epoch: 24
+algorithm:
+  fusion: {population: 6, generations: 4}
+experiment:
+  name: real_data_gansu_validation
+  targets: [G5]
+  transfers: [intra]
+  budgets: [30]
+  methods: [rmaf, persistence, target_only, multi_source, dann, mmd, coral]
+evaluation:
+  diagnostic_samples: 96
+  latency_repeats: 20

@@ -1,0 +1,50 @@
+data:
+  root: data
+  interval_minutes: 15
+  ratios: [4, 4, 16, 6]
+  min_windows: 2
+  short_budget_valid_fallback: true
+  test_days: 30
+  reference_days: 30
+  allow_prior_history: true
+  date_format: mixed
+  quality_horizons: [1, 24]
+  negative: drop
+  duplicate: mean
+  max_normalized_power: null
+  capacity_overrides: data/metadata/capacities.yaml
+  pvdaq:
+    years: [2021, 2022, 2023]
+    starts: ['03-01', '06-01', '09-01', '12-01']
+    minimum_coverage: 0.8
+    download_patterns:
+      '2105': '(2105_meter_data\.csv|2105_system_metadata\.json)$'
+      '2107': '(2107_meter_15m_data\.csv|2107_system_metadata\.json)$'
+      '9068': '(9068_ac_power_data\.csv|9068_system_metadata\.json)$'
+      '7333': '(7333_5_min_ac_202[1-3].*\.csv|7333_system_metadata\.json)$'
+      '9069': '(9069_meter_data\.csv|9069_system_metadata\.json)$'
+  stations:
+    H1: {region: Hebei, dataset: pvod, native_id: '01'}
+    H2: {region: Hebei, dataset: pvod, native_id: '02'}
+    H4: {region: Hebei, dataset: pvod, native_id: '04'}
+    H6: {region: Hebei, dataset: pvod, native_id: '06'}
+    H7: {region: Hebei, dataset: pvod, native_id: '07'}
+    H8: {region: Hebei, dataset: pvod, native_id: '08'}
+    G5: {region: Gansu, dataset: state_grid, native_id: '5'}
+    G7: {region: Gansu, dataset: state_grid, native_id: '7'}
+    '2105': {region: US, dataset: pvdaq, timezone: Pacific/Honolulu, input_timezone: Pacific/Honolulu, pattern: 2105_meter_data.csv, timestamp_column: measured_on, power_column: 'meter_ac_output_(kwatts)_meter_150161'}
+    '2107': {region: US, dataset: pvdaq, timezone: America/Los_Angeles, input_timezone: PST8PDT, pattern: 2107_meter_15m_data.csv, timestamp_column: measured_on, power_column: meter_revenue_grade_ac_output_meter_149578}
+    '9068': {region: US, dataset: pvdaq, timezone: America/Denver, input_timezone: America/Denver, pattern: 9068_ac_power_data.csv, timestamp_column: measured_on, power_column: 'meter_ac_power_(kw)_meter_150150', native_minutes: 5, negative: clip}
+    '7333': {region: US, dataset: pvdaq, timezone: America/Los_Angeles, input_timezone: UTC, pattern: '7333_5_min_ac_202[1-3]*.csv', timestamp_column: utc_measured_on, power_column: sos-sub-pri-rev-tot-mw__176944, power_multiplier: 1000, native_minutes: 5, negative: clip}
+    '9069':
+      region: US
+      dataset: pvdaq
+      timezone: America/New_York
+      input_timezone: 'Etc/GMT+5'
+      pattern: 9069_meter_data.csv
+      timestamp_column: measured_on
+      power_column: 'meter_2_ac_power_(kw)_meter_151053'
+      native_minutes: 5
+  periods:
+    pvod: ['2018-07-01', '2019-07-01']
+    state_grid: ['2019-07-01', '2020-07-01']

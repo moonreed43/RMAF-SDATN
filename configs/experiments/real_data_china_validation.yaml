@@ -1,0 +1,9 @@
+include: [real_data_validation.yaml]
+training:
+  source_batches_per_epoch: 16
+experiment:
+  name: real_data_china_budget_validation
+  targets: [H7, H8, G5, G7]
+  transfers: [mixed]
+  budgets: [1, 3, 7, 14, 30]
+  methods: [rmaf, persistence, target_only]

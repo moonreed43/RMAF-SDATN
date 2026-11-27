@@ -1,0 +1,11 @@
+include: [../base.yaml]
+experiment:
+  name: reliability
+  transfers: [mixed]
+  budgets: [30]
+  methods: [rmaf, target_only]
+  analysis: reliability
+  variants:
+    full: {}
+    high_gate: {algorithm: {alignment: {gate: high}}}
+    low_gate: {algorithm: {alignment: {gate: low}}}

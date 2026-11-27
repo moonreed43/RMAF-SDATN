@@ -1,0 +1,35 @@
+model:
+  history: 12
+  horizon: 1
+  hidden: 64
+  layers: 2
+  dropout: 0.2
+  rank: 4
+  alpha: 8
+  scales: [1, 4, 8]
+  embedding: 16
+  shared_dim: 64
+  supplementary_dim: 64
+  discriminator_hidden: 64
+algorithm:
+  epsilon: 1.e-8
+  adapter_penalty: 1.e-5
+  reliability: {covariance: 1.0, eta: 0.5, temperature: 0.5}
+  fusion: {mode: constrained, prior_penalty: 0.1, population: 20, generations: 30, elite_ratio: 0.30, mutation_std: 0.001, init_std: 0.05, mutation: gaussian}
+  alignment:
+    enabled: true
+    discriminator: per_source
+    branch: shared
+    station_weights: reliability
+    gate: online
+    gate_range: [0.5, 1.5]
+    gate_fraction: 0.5
+    lambda_max: 1.0
+    gamma: 10
+  anchoring: {mode: scarcity, backbone: 0.01, adapter: 0.005, evolution: 0.001, multiplier: 1.0, freeze_backbone: false}
+  independent_full_models: false
+  baseline_alignment_weight: 1.0
+baselines:
+  cyclenet: {period: 96, interval_minutes: 15, revin: false, head: mlp, width: 64}
+  patchtst: {patch_length: 4, patch_stride: 2, width: 64, heads: 4, feedforward: 128, layers: 2}
+  timesnet: {width: 32, feedforward: 64, periods: 3, kernels: 3, layers: 2}

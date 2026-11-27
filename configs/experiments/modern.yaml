@@ -1,0 +1,6 @@
+include: [../base.yaml]
+experiment:
+  name: modern
+  transfers: [mixed]
+  budgets: [30]
+  methods: [rmaf, target_only, patchtst, timesnet, cyclenet]

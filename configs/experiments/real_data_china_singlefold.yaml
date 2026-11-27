@@ -1,0 +1,11 @@
+include: [../base.yaml]
+training:
+  seeds: [42]
+  epochs: {shared: 15, adapter: 8, adversarial: 8, target: 20}
+  source_batches_per_epoch: 128
+experiment:
+  name: real_data_china_singlefold
+  targets: [H7]
+  transfers: [mixed]
+  budgets: [30]
+  methods: [rmaf, target_only, persistence]

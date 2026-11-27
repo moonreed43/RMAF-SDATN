@@ -1,0 +1,14 @@
+include: [pvdaq.yaml]
+training:
+  seeds: [42]
+  epochs: {shared: 2, adapter: 2, adversarial: 2, target: 2}
+  source_batches_per_epoch: 12
+algorithm:
+  fusion: {population: 6, generations: 4}
+experiment:
+  name: integration_pvdaq_windows_20261127
+  methods: [rmaf, persistence, target_only]
+  keep_going: true
+evaluation:
+  diagnostic_samples: 64
+  latency_repeats: 10

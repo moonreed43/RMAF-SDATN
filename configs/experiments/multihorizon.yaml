@@ -1,0 +1,4 @@
+include: [../base.yaml]
+model: {horizon: 24}
+experiment: {name: multihorizon, transfers: [mixed], budgets: [30]}
+evaluation: {steps: [4, 8, 16, 24]}

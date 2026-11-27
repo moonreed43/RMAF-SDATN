@@ -1,0 +1,10 @@
+include: [../base.yaml]
+experiment:
+  name: stability
+  transfers: [mixed]
+  budgets: [30]
+  methods: [rmaf, target_only, multi_source, dann]
+  analysis: stability
+  variants:
+    full: {}
+    uniform_fusion: {algorithm: {fusion: {mode: uniform}}}

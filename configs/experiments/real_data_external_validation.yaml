@@ -1,0 +1,10 @@
+include: [real_data_validation.yaml]
+data:
+  pvdaq:
+    years: [2022]
+    starts: ['06-01']
+experiment:
+  name: real_data_external_multi_source
+  targets: ['2107']
+  transfers: [external]
+  methods: [rmaf, persistence, target_only]
